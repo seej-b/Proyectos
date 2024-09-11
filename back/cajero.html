@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cajero Automático</title>
+    <script>
+        function cajeroAutomatico() {
+            let CONTADOR = 3;
+            const SALDO_INICIAL = 2193000;
+
+            while (CONTADOR > 0) {
+                alert("Cajero Automático");
+                
+                let CAJERO = prompt('Seleccione su banco:\n1. Bancolombia\n2. AV Villas\n3. Banco de Bogotá');
+                if (!['1', '2', '3'].includes(CAJERO)) {
+                    alert("Banco no disponible, inténtelo nuevamente");
+                    continue;
+                }
+                
+                let METODO = prompt('Seleccione el método para retirar:\n1. Cajero\n2. Código');
+                if (!['1', '2'].includes(METODO)) {
+                    alert("Método no disponible, inténtelo nuevamente");
+                    continue;
+                }
+                
+                let SALDO = SALDO_INICIAL;
+                alert("Su saldo es: " + SALDO);
+                
+                let RETIRAR = parseInt(prompt("Ingrese el valor a retirar: "), 10);
+                if (RETIRAR > SALDO) {
+                    CONTADOR--;
+                    alert("No hay suficiente saldo, inténtelo nuevamente, número de intentos restantes: " + CONTADOR);
+                    if (CONTADOR === 0) {
+                        alert("Ha excedido el número máximo de intentos. Por favor, vuelva a intentarlo más tarde.");
+                        return;
+                    }
+                    continue;
+                } else {
+                    alert("Retirando " + RETIRAR + " pesos...");
+                    SALDO -= RETIRAR;
+
+                    if (['1', '2', '3'].includes(CAJERO) && METODO === '1') {
+                        let CLAVE = prompt("Ingrese su clave: ");
+                        if (CLAVE == "2024") {
+                            alert("La clave es incorrecta.");
+                            CONTADOR--;
+                            if (CONTADOR === 0) {
+                                alert("Ha excedido el número máximo de intentos. Por favor, vuelva a intentarlo más tarde.");
+                                return;
+                            }
+                        } else {
+                            alert("Retiro exitoso. Su saldo actual es: " + SALDO);
+                        }
+                        
+                    } else if (['1', '2', '3'].includes(CAJERO) && METODO === '2') {
+                        prompt("Ingrese su código de seguridad: ");
+                        alert("Retiro exitoso. Su saldo actual es: " + SALDO);
+                        break;
+                    } else {
+                        alert("Método de retiro no válido.");
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body onload="cajeroAutomatico()">
+</body>
+</html>

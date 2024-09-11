@@ -1,0 +1,175 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: cursive;
+    background-color: #000000; 
+    color: #ffffff;
+    background-image: url(Imagenes/cielo-estrellado_98.webp);
+}
+
+header {
+    background-color: #0c2340;
+    text-align: center;
+    padding: 20px 0;
+    border-bottom: 2px solid #2b5797;
+}
+
+h1 {
+    font-size: 40px;
+    margin-bottom: 25px;
+}
+
+.container_logo .logo{
+    width: 80px;
+    height: 80px;
+    border-radius: 20%;
+    position: absolute;
+    margin-left: 450px;
+    margin-top: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+    
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+nav ul li input{
+    padding: 5px;
+    border: 1px solid #2b5797;
+}
+
+nav ul li button {
+    background-color: #2b5797; 
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+h2 {
+    text-align: center;
+    font-size: 30px;
+    margin-top: 30px;
+}
+
+p {
+    text-align: center;
+    font-size: 23px;
+    padding: 20px;
+}
+
+a:hover {
+    color: #2b5797;
+}
+
+a:active {
+    color: #ffcc00;
+}
+
+.container_imgs{
+    display: flex;
+}
+
+.img_1{
+    height: 400px;
+    width: 600px;
+    border-radius: 20px;
+    position: relative;
+    z-index: 3;
+    margin-left: 80px;
+}
+
+.img_2{
+    height: 400px;
+    width: 600px;
+    border-radius: 20px;
+    position: relative;
+    z-index: 2;
+    top: 150px;
+    right: 250px;
+}
+
+.img_3{
+    height: 400px;
+    width: 600px;
+    border-radius: 20px;
+    position: relative;
+    z-index: 1;
+    top: 420px;
+    right: 600px;
+}
+
+.img_1:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+.img_2:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+.img_3:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+.p-{
+    margin-top: 500px;
+}
+
+.container_p{
+    display: flex;
+    margin-top: 30px;
+}
+
+.img_4{
+    height: 400px;
+    width: 600px;
+    margin-left: 400px;
+    border-radius: 30px;
+}
+
+.img_4:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+.img_5{
+    height: 400px;
+    width: 600px;
+    border-radius: 30px;
+    margin-left: 400px;
+}
+
+.img_5:hover{
+    transform: scale(1.1);
+    transition: 0.3s;
+}
+
+footer nav ul li a img{
+    height: 5%;
+    width: 5%;
+}
+
+footer p{
+    text-align: center;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.whatsapp{
+    margin-left: 550px;
+}
