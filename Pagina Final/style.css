@@ -252,6 +252,125 @@ footer nav ul li a img{
     margin-left: 550px;
 }
 
+/* Media Queries para adaptar el diseño a dispositivos móviles */
+@media (max-width: 768px) {
+    body {
+        background-image: none; /* Elimina la imagen de fondo para mejorar el rendimiento en móviles */
+    }
+
+    header {
+        padding: 10px 0;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    .container_logo .logo {
+        width: 60px;
+        height: 60px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+    }
+
+    nav ul {
+        text-align: center;
+        padding: 0;
+    }
+
+    nav ul li {
+        display: block;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+
+    nav ul li a {
+        font-size: 16px;
+    }
+
+    nav ul li input {
+        width: 100%;
+        padding: 8px;
+    }
+
+    nav ul li button {
+        width: 100%;
+        padding: 8px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .imagen1-container,
+    .imagen2-container,
+    .container_stars,
+    .container_galaxias,
+    .imagen3-container {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .imagen2-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .imagen1,
+    .imagen2,
+    .imagen3,
+    .imagen4,
+    .imagen5,
+    .imagen6,
+    .imagen7,
+    .imagen8,
+    .imagen9,
+    .imagen10,
+    .imagen11 {
+        width: 100%;
+        height: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .imagen3, .imagen7, .imagen6, .imagen9, .imagen10{
+        display: none;
+    }
+
+    .imagen4{
+        display: none;
+    }
+
+    .imagen8{
+        position: relative;
+        right: 50%;
+    }
+
+    .text_transform {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .whatsapp {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        margin-top: 10px;
+    }
+
+    footer nav ul li a img {
+        height: 20px;
+        width: 20px;
+    }
+}
+
 
 
 
