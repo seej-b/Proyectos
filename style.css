@@ -378,6 +378,7 @@ h2{
 
     .about-txt{
         margin-left: 60px;
+        width: 330px;
     }
 
     .certificaciones{
@@ -449,5 +450,10 @@ h2{
     .footer-content{
         flex-direction: column;
         text-align: center;
+    }
+
+    .correo{
+        position: relative;
+        right: 6.8%;
     }
 }
