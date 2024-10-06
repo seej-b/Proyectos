@@ -1,0 +1,95 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #e0e0e0, #a6c1ee);
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: white;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.container p{
+    margin: 30px auto;
+    padding: 30px;
+    max-width: 800px;
+    line-height: 1.8;
+    font-size: 18px;
+    color: #000000;
+    background: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container h1{
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 30px;
+    font-size: 2em;
+    color: #00c6ff;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.2em;
+    line-height: 1.6em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #0056b3;
+}
+
+.carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.404), inset 0 0 30px rgba(0, 255, 255, 0.158);
+}
+
+.carousel img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.carousel-controls button {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-controls button:hover {
+    background-color: #333;
+}

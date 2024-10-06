@@ -1,12 +1,22 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¡Adivina el número!</title>
     <link rel="shortcut icon" href="images/pregu.avif" type="image/x-icon">
+    <link rel="stylesheet" href="aleatorio.css">
+    <link rel="shortcut icon" href="images/question-mark.png" type="image/x-icon">
 </head>
 <body>
+    <div class="container">
+        <h1>¡Adivina el Número!</h1>
+        <p>Ingresa un número entre 1 y 100 para comenzar el juego.</p>
+        <input type="number" id="user-input" placeholder="Ingresa tu número aquí" min="1" max="100">
+        <button id="guess-btn">Adivinar</button>
+        <p id="message"></p>
+    </div>
+
     <script src="aleatorio.js"></script>
 </body>
 </html>

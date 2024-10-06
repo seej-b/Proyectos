@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-/*
-font-family: "Bebas Neue", sans-serif;
-font-family: "Poppins", sans-serif;
-*/
-
 *{
     margin: 0;
     padding: 0;
@@ -15,7 +10,7 @@ font-family: "Poppins", sans-serif;
 
 body{
     font-family: "Poppins", sans-serif;
-    background-color: #101630;
+    background-color: #101630f5;
 }
 
 img{
@@ -35,6 +30,10 @@ img{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    background-color: #101630;
+    border-radius: 10px;
 }
 
 .logo{
@@ -127,6 +126,7 @@ img{
     font-size: 15px;
     border-radius: 10px;
     transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 .btn-1:hover{
@@ -138,13 +138,19 @@ img{
 }
 
 .about{
+    margin-top: -80px;
     padding: 0 0 100px 0;
     display: flex;
     align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    margin-bottom: 50px;
 }
 
 .about-img{
     flex-basis: 40%;
+    padding: 60px;
 }
 
 .about-img img{
@@ -152,6 +158,7 @@ img{
     border-radius: 50%;
     border: 10px solid #49BADA;
     transition: transform 0.3s;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 .about-img img:hover{
@@ -160,6 +167,17 @@ img{
 
 .about-txt{
     flex-basis: 60%;
+    margin: 30px auto;
+    padding: 30px;
+    max-width: 800px;
+    line-height: 1.8;
+    font-size: 18px;
+    color: #f1f1f1;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    margin-right: 60px;
 }
 
 h2{
@@ -179,51 +197,13 @@ h2{
     margin-right: 15px;
 }
 
-.software {
-    position: relative;
-    background: linear-gradient(135deg, #7acdee, #73f0ab); /* Degradado llamativo */
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-    max-width: 600px;
-    margin: 20px auto;
-    text-align: center;
-    top: 450px;
-    right: 480px;
-}
-
-.software ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.software ul li {
-    font-size: 1.5rem;
-    margin: 10px 0;
-    color: #ffffff; /* Texto en blanco */
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.software ul li i {
-    margin-right: 10px;
-    font-size: 2rem;
-    color: #ffffff; /* Iconos en blanco */
-    transition: color 0.3s ease;
-}
-
-.software ul li:hover {
-    transform: translateY(-5px);
-    color: #f05a28; /* Cambia de color al pasar el ratón */
-}
-
-.software ul li:hover i {
-    color: #f4d03f; /* Cambia el color del icono al pasar el ratón */
-}
-
-
 .portfolio{
     padding: 50px 0;
     text-align: center;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    padding: 50px;
+    background-color: #101630;
+    border-radius: 10px;
 }
 
 .portfolio-content{
@@ -235,6 +215,10 @@ h2{
     justify-content: space-between;
     align-items: center;
     margin-bottom: 100px;
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    padding: 20px;
 }
 
 .portfolio-txt{
@@ -274,12 +258,18 @@ h2{
     height: 250px;
     border-radius: 10px;
     transition: transform 0.3s;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 .portfolio-img img:hover{
     transform: scale(1.05);
     box-shadow: 0 5px 10px rgba(247, 247, 247, 0.4);
     transition: 0.3s linear;
+}
+
+.certificaciones img{
+    margin-left: 110%;
+    margin-top: -70%;
 }
 
 .skills{
@@ -315,11 +305,12 @@ h2{
     padding: 50px 0;
     background: linear-gradient(
         90deg,
-        rgba(74, 42, 193, 1) 0%,
-        rgba(78, 159, 215, 1) 100%
+        rgba(75, 42, 193, 0.555) 0%,
+        rgba(78, 158, 215, 0.541) 100%
     );
     color: #ffffff;
     font-size: 22px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }
 
 

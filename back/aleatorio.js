@@ -1,20 +1,21 @@
 const numAleatorio = Math.floor(Math.random() * 100) + 1;
-var num;
 console.log(numAleatorio);
 
-do{
-    num = parseInt(prompt("¡Bienvenido a: Adivina el número! Por favor ingrese un número del 1 al 100:"));
+document.getElementById('guess-btn').addEventListener('click', function() {
+    const num = parseInt(document.getElementById('user-input').value);
+    const messageEl = document.getElementById('message');
 
-    if (num >= numAleatorio && num !== numAleatorio){
-        alert("Número incorrecto, intentelo nuevamente. Pista: El número que ingresaste es mayor que el número que tienes que adivinar.");
+    if (isNaN(num) || num < 1 || num > 100) {
+        messageEl.textContent = "Por favor, ingresa un número válido entre 1 y 100.";
+        return;
     }
 
-    else if (num <= numAleatorio && num !== numAleatorio){
-        alert("Número incorrecto, intentelo nuevamente. Pista: El número que ingresaste es menor que el numero que tienes que adivinar.");
+    if (num > numAleatorio) {
+        messageEl.textContent = "Número incorrecto. Pista: el número es menor.";
+    } else if (num < numAleatorio) {
+        messageEl.textContent = "Número incorrecto. Pista: el número es mayor.";
+    } else {
+        messageEl.textContent = "¡Acertaste! El número era " + numAleatorio;
+        messageEl.style.color = "#28a745";
     }
-
-    if(num == numAleatorio){
-        alert("¡Acertaste el número!: " + numAleatorio);
-    }
-
-}while(num !== numAleatorio);
+});
