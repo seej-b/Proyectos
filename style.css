@@ -357,6 +357,8 @@ h2{
 
     .header-txt h1{
         font-size: 70px;
+        margin-top: 40px;
+        margin-bottom: 70px;
     }
 
     .about{
@@ -372,6 +374,20 @@ h2{
     .about-img img{
         width: 250px;
         margin-bottom: 15px;
+    }
+
+    .about-txt{
+        margin-left: 60px;
+    }
+
+    .certificaciones{
+        height: 900px;
+    }
+
+    .certificaciones img{
+        position: relative;
+        right: 100%;
+        margin-top: 10%;
     }
 
     .butons a{
@@ -402,10 +418,23 @@ h2{
 
     .portfolio-img img{
         width: 250px;
+        height: 150px;
+    }
+
+    #tecno{
+        position: relative;
+        right: 245%;
+        margin-top: 30px;
     }
 
     .skills{
         padding: 0 30px 30px 30px;
+    }
+
+    .skills-content img{
+        position: relative;
+        max-width: 300px;
+        right: 95%;
     }
 
     .skills-content{
