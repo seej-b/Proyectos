@@ -4,60 +4,819 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repositorio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="images/icono.png" type="image/x-icon">
+    <title>SeebakTech</title>
+    <link rel="shortcut icon" href="images/log.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <style>
+        :root {
+            --bg: #1c1234;
+            --primary: #8f48c3;
+            --secondary: #2e165c;
+            --accent: #be84e1;
+            --h1: #fff;
+            --btn: #7e5896;
+            --img: #613c79;
+            --text: #f1f1f1;
+            --circle: rgba(255, 255, 255, 0.1);
+            --dark: #0b0515;
+            --glass: rgba(255, 255, 255, 0.05);
+            --bg-light: rgba(255, 255, 255, 0.05);
+            --glass-blur: blur(10px);
+        }
+
+        [data-theme="light"] {
+            --bg: #dcc8fa93;
+            --primary: #cbb3ea;
+            --secondary: #7f5af0;
+            --accent: #7f5af0;
+            --h1: #2c2c38;
+            --btn: #b398d4;
+            --img: #ddd1ed;
+            --text: #2c2c38;
+            --circle: rgba(0, 0, 0, 0.1);
+            --dark: #0b051546;
+            --glass: rgba(0, 0, 0, 0.03);
+            --bg-light: #ece7f4;
+            --glass-blur: blur(10px);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            list-style: none;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            overflow: hidden;
+            padding-bottom: 100px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease-in-out;
+            backdrop-filter: var(--glass-blur);
+            -webkit-background-clip: text;
+            animation: slideIn 1s ease-out;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            width: 180px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .search-bar {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--bg-light);
+            padding: 0.5rem 1rem;
+            border-radius: 30px;
+            backdrop-filter: var(--glass-blur);
+        }
+
+        .search-bar input {
+            border: none;
+            background: transparent;
+            color: var(--text);
+            outline: none;
+            width: 160px;
+        }
+
+        .search-bar button {
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+        }
+
+        .menu-icon img {
+            width: 30px;
+        }
+
+        /* Navbar */
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .navbar a {
+            color: var(--text);
+            font-weight: bold;
+            font-size: 1rem;
+            position: relative;
+            text-transform: uppercase;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease-in-out;
+        }
+
+        .navbar a:hover::after {
+            width: 100%;
+        }
+
+        .navbar a:hover {
+            color: var(--accent);
+        }
+
+        #menu-toggle {
+            display: none;
+        }
+
+        .header-content {
+            text-align: center;
+            padding: 4rem 1rem;
+            z-index: 2000;
+        }
+
+        header::before,
+        header::after {
+            content: '';
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: var(--circle);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        header::before {
+            top: -30px;
+            left: -10px;
+        }
+
+        header::after {
+            bottom: -30px;
+            right: -10px;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-20px) scale(1.05);
+            }
+        }
+
+
+        .header-txt h1 {
+            font-size: 2.5rem;
+            color: var(--text);
+            background: linear-gradient(to right, var(--accent), var(--h1));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: slideIn 1s ease-out;
+        }
+
+        /* Animaciones */
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .toggle-theme {
+            background: transparent;
+            border: none;
+            color: var(--text);
+            font-size: 1.3rem;
+            cursor: pointer;
+            margin-left: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .toggle-theme:hover {
+            transform: scale(1.1);
+        }
+
+        /* Header reducido */
+        header.shrink {
+            padding-bottom: 1px;
+            padding-top: 1px;
+            transition: all 0.4s ease-in-out;
+        }
+
+        header.shrink .logo {
+            transform: scale(0.5);
+            width: 90px;
+        }
+
+        header.shrink .navbar a {
+            font-size: 0.8rem;
+            gap: 1rem;
+        }
+
+
+        /* Ocultar el h1 con transición */
+        .header-txt h1 {
+            transition: all 0.4s ease;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .header-txt h1.hidden {
+            display: none;
+            opacity: 0;
+            transform: translateY(-20px);
+            pointer-events: none;
+        }
+
+        .header-txt h1.hidden {
+            opacity: 0;
+            transform: translateY(-20px);
+            pointer-events: none;
+        }
+
+        header.shrink .header-content {
+            padding: 0;
+            margin: 0;
+            height: 0;
+            overflow: hidden;
+        }
+
+        #Repositorio {
+            margin-bottom: 6rem;
+        }
+
+        #punto {
+            color: transparent;
+        }
+
+        section {
+            padding: 5rem 2rem;
+            position: relative;
+        }
+
+        .about {
+            margin-top: 40px;
+            padding: 0 0 100px 0;
+            display: flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+            margin-bottom: 50px;
+        }
+
+        .about-img {
+            flex-basis: 40%;
+            padding: 60px;
+        }
+
+        .about-img img {
+            transition: transform 0.3s;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .about-img img:hover {
+            transform: scale(1.05);
+        }
+
+        .about-txt {
+            flex-basis: 60%;
+            margin: 30px auto;
+            padding: 30px;
+            max-width: 800px;
+            line-height: 1.8;
+            font-size: 18px;
+            color: #f1f1f1;
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
+            margin-right: 60px;
+        }
+
+        .about-img img {
+            border-radius: 50%;
+            box-shadow: 0 0 30px var(--img);
+            width: 300px;
+        }
+
+        .about-txt h2,
+        .portfolio h2,
+        .skills h2,
+        footer h2 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .about-txt p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .about-txt h2 {
+            -webkit-background-clip: text;
+            animation: fadeInDown 1.0s ease;
+        }
+
+        .btn-1 {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background: var(--btn);
+            color: #fff;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-1:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px var(--primary);
+        }
+
+        .portfolio,
+        .certificaciones {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .portfolio h2,
+        .title h3 {
+            font-size: 2.5rem;
+            color: var(--text);
+            text-align: center;
+        }
+
+        .portfolio-content,
+        .certificaciones {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            margin-top: 40px;
+        }
+
+        .portfolio-1,
+        .certificaciones {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            background: var(--glass);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-1:hover {
+            transform: scale(1.02);
+        }
+
+        .portfolio-img img,
+        .certificaciones {
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 0 30px var(--dark);
+        }
+
+        .portfolio-txt,
+        .certificaciones {
+            flex: 1;
+            min-width: 200px;
+            font-size: 1.1rem;
+        }
+
+        .portfolio-txt p,
+        .certificaciones p {
+            margin: 1rem 0;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .portfolio-txt h3,
+        .certificaciones h3 {
+            font-size: 2.0rem;
+            color: var(--accent);
+        }
+
+        .portfolio-txt span,
+        .certificaciones span {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .certificaciones {
+            max-width: 800px;
+        }
+
+        .certificaciones img {
+            margin-top: 20px;
+            margin-left: 28%;
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            box-shadow: 0 0 30px var(--dark);
+        }
+
+        .skills-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .skills-content img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px var(--img));
+        }
+
+        .skills h2 {
+            color: var(--text);
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        footer {
+            background: var(--dark);
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin-top: 0.5rem;
+            font-size: 1rem;
+        }
+
+        footer a {
+            color: var(--text);
+            transition: color 0.3s;
+        }
+
+        footer a:hover {
+            color: var(--accent);
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        @keyframes floaty {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .portfolio-img img:hover {
+            animation: floaty 2s ease-in-out infinite;
+        }
+
+        @media (max-width:991px) {
+
+            .navbar ul {
+                display: none;
+                flex-direction: column;
+                gap: 1.5rem;
+                background: var(--bg-light);
+                padding: 1rem;
+                border-radius: 10px;
+                position: absolute;
+                top: 100%;
+                right: 2rem;
+                width: 200px;
+            }
+
+            #menu-toggle:checked+label+.navbar ul {
+                display: flex;
+            }
+
+            .menu-icon {
+                display: block;
+            }
+
+            .search-bar {
+                order: 3;
+                margin-top: 1rem;
+            }
+
+
+            .menu {
+                padding: 20px;
+            }
+
+            .menu label {
+                display: initial;
+            }
+
+            .menu .navbar {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #49BADA;
+                display: none;
+            }
+
+            .menu .navbar ul li a:hover {
+                color: #101630;
+            }
+
+            .menu .navbar ul li {
+                width: 100%;
+            }
+
+            #menu:checked~.navbar {
+                display: initial;
+            }
+
+            .header {
+                min-height: 0vh;
+                padding: 100px 30px 30px 30px;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .header-txt h1 {
+                font-size: 70px;
+                margin-top: 40px;
+                margin-bottom: 70px;
+            }
+
+            .about {
+                padding: 30px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-img {
+                text-align: center;
+            }
+
+            .about-img img {
+                width: 250px;
+                margin-bottom: 15px;
+            }
+
+            .about-txt {
+                margin-left: 60px;
+                width: 330px;
+            }
+
+            .certificaciones {
+                height: 900px;
+            }
+
+            .certificaciones img {
+                position: relative;
+                right: 100%;
+                margin-top: 10%;
+            }
+
+            .butons a {
+                margin: 0 0 10px 0;
+            }
+
+            .portfolio {
+                padding: 30px;
+            }
+
+            .portfolio-content {
+                margin-top: 30px;
+            }
+
+            .portfolio-1 {
+                flex-direction: column;
+                margin-bottom: 30px;
+            }
+
+            .portfolio-txt {
+                text-align: center;
+                margin-bottom: 30px;
+            }
+
+            .portfolio-img {
+                order: 2;
+            }
+
+            .portfolio-img img {
+                width: 250px;
+                height: 150px;
+            }
+
+            #tecno {
+                position: relative;
+                right: 245%;
+                margin-top: 30px;
+            }
+
+            .skills {
+                padding: 0 30px 30px 30px;
+            }
+
+            .skills-content img {
+                position: relative;
+                max-width: 300px;
+                right: 95%;
+            }
+
+            .skills-content {
+                margin-top: 0;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 40px;
+                padding: 0 100px;
+            }
+
+            .footer {
+                padding: 30px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .correo {
+                position: relative;
+                right: 6.8%;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <header class="header">
+    <header class="header" id="main-header">
         <div class="menu container">
-            <a href="#Repositorio" class="logo">Repositorio de Proyectos</a>
-            <input type="checkbox" id="menu" />
-            <label for="menu">
-                <img src="images/menu.png" class="menu-icono" alt="menu">
-            </label>
-            <nav class="navbar">
-                <ul>
-                    <li><a href="#sobremi">Sobremí</a></li>
-                    <li><a href="#Repositorio">Repositorio</a></li>
-                    <li><a href="#contac">Contacto</a></li>
-                </ul>
+            <a href="#home" class="logo-link">
+                <img src="/images/log.png" alt="Logo" class="logo" />
+            </a>
 
-            </nav>
-
-        </div>
-        <div class="header-content container">
-            <div class="header-txt">
-                <h1>Técnico Auxiliar en Desarrollo de Software</h1>
-
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar..." />
+                <button><i class="fas fa-search"></i></button>
             </div>
 
+            <input type="checkbox" id="menu-toggle" />
+            <label for="menu-toggle" class="menu-icon">
+                <img src="images/menu.png" alt="Menú" />
+            </label>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#punto">Sobre mí</a></li>
+                    <li><a href="#Repositorio">Proyectos</a></li>
+                    <li><a href="#certi">Certificaciones</a></li>
+                    <li><a href="#contac">Contacto</a></li>
+                    <li><a href="/cv/curriculumsebas.html">CV</a></li>
+                </ul>
+            </nav>
+
+            <button class="toggle-theme" id="toggle-theme" aria-label="Cambiar tema">
+                <i class="fas fa-moon"></i>
+            </button>
+
         </div>
 
+        <script>
+            // Selecciona el header
+            const header = document.querySelector("header");
+
+            // Variable para controlar cuándo se detiene el scroll
+            let isScrolling;
+
+            // Umbral en píxeles para encoger el header
+            const SHRINK_THRESHOLD = 50;
+
+            // Escucha el evento scroll
+            window.addEventListener("scroll", () => {
+                // Limpia el temporizador anterior
+                clearTimeout(isScrolling);
+
+                // Establece un nuevo temporizador (espera a que el usuario deje de hacer scroll)
+                isScrolling = setTimeout(() => {
+                    const scrollTop = window.scrollY;
+
+                    // Aplica o elimina la clase según el umbral definido
+                    if (scrollTop > SHRINK_THRESHOLD) {
+                        header.classList.add("shrink");
+                    } else {
+                        header.classList.remove("shrink");
+                    }
+                }, 100); // Espera 100ms después de que el usuario deja de hacer scroll
+            });
+
+            const toggleThemeBtn = document.getElementById('toggle-theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            const setTheme = (theme) => {
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+                toggleThemeBtn.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+            };
+
+            // Cargar tema guardado o predeterminado
+            const storedTheme = localStorage.getItem('theme');
+            setTheme(storedTheme || (prefersDark ? 'dark' : 'light'));
+
+            toggleThemeBtn.addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+                setTheme(newTheme);
+            });
+        </script>
+
+        <div class="header-content container">
+            <div class="header-txt">
+                <h1>Entendemos lo que necesitas, <br>creamos lo que te impulsa.</h1>
+            </div>
+        </div>
     </header>
+
+    <div id="punto">
+        <p>.</p>
+    </div>
 
     <section class="about container">
         <div class="about-img">
-            <img src="images/seejb2-modified.png" alt="">
+            <img src="images/image (9).png" alt="">
         </div>
 
         <div class="about-txt">
             <h2 id="sobremi">Sobre mí</h2>
-            <p>Mi nombre es Keduin Sebastián Jiménez Bravo y tengo 17 años. Actualmente curso el grado undécimo en la
-                Institución Educativa San Antonio de Prado, dentro de la modalidad Media Técnica. A lo largo de este
-                proceso, he tenido la oportunidad de aprender tanto conceptos básicos como avanzados de programación, lo
-                que ha despertado en mí un gran interés por el mundo de la tecnología y el desarrollo de software.
-                <br>
-                <br>
-                Esta experiencia no solo me ha brindado valiosos conocimientos, sino que también me ha permitido crecer
-                como persona, impulsándome a dar lo mejor de mí en cada proyecto en el que participo. Estoy entusiasmado
-                por seguir aprendiendo y enfrentar nuevos desafíos que me permitan seguir evolucionando en este
-                apasionante campo.
+            <p>SeebakTech es la fusión entre el pensamiento creativo y la ejecución técnica. Soy tecnólogo en desarrollo
+                de software y técnico en asesoría comercial con enfoque en soluciones funcionales, diseñadas desde la
+                experiencia de usuario. Lidero con estrategia, comunico con claridad y ejecuto con puntualidad. ¿La
+                diferencia? Transformo ideas en proyectos reales que resuelven problemas cotidianos, combinando
+                habilidades en ofimática, desarrollo y servicio al cliente. En SeebakTech, no solo construimos
+                tecnología, creamos conexiones que funcionan.
             </p>
 
             <div class="butons">
-                <a href="#tecno" class="btn-1">Tecnologias</a>
+                <a href="/cv/curriculumsebas.html" class="btn-1">CV</a>
             </div>
 
         </div>
@@ -65,18 +824,16 @@
     </section>
 
     <main class="portfolio container">
-        <h2 id="Repositorio">Repositorio</h2>
+        <h2 id="Repositorio">Proyectos</h2>
         <div class="portfolio-content">
 
             <div class="portfolio-1">
                 <div class="portfolio-txt">
                     <span>Proyecto 1</span>
                     <h3>Página web Astronomía</h3>
-                    <p>En este proyecto, tuve la oportunidad de aplicar todo el conocimiento adquirido durante mi primer
-                        año en la modalidad de Media Técnica. Utilicé HTML y CSS de manera creativa, lo que me permitió
-                        experimentar con diferentes estilos y entregar un resultado final que refleja un gran esfuerzo y
-                        dedicación. Fue una experiencia muy enriquecedora que consolidó mis habilidades en el desarrollo
-                        web.
+                    <p>Aplicación creativa de HTML y CSS para presentar contenido educativo de forma clara y atractiva.
+                        Un proyecto que refleja cómo el diseño estratégico puede transformar el aprendizaje en
+                        experiencia digital.
                     </p>
                     <a href="Pagina Final/index.html" class="btn-1">¡ver más!</a>
 
@@ -95,10 +852,8 @@
                 <div class="portfolio-txt">
                     <span>Proyecto 2</span>
                     <h3>Página web Aviación</h3>
-                    <p>Este proyecto refleja mi pasión por el mundo de la aviación. Lo desarrollé en mis tiempos libres,
-                        lo que me permitió profundizar en el diseño de estilos y en el desarrollo frontend, aplicando
-                        los nuevos conocimientos que había adquirido. A través de esta página, utilicé HTML y CSS para
-                        plasmar mi interés en el tema y mejorar mis habilidades técnicas.
+                    <p>Un desarrollo personal donde combiné mi pasión por la aviación con habilidades frontend. Exploré
+                        estilos y estructura visual para crear una interfaz intuitiva y centrada en el usuario.
                     </p>
                     <a href="aviacion/index.html" class="btn-1">¡ver más!</a>
 
@@ -111,11 +866,9 @@
                 <div class="portfolio-txt">
                     <span>Proyecto 3</span>
                     <h3>Calculadora</h3>
-                    <p>En este proyecto, tuve la oportunidad de ampliar mis habilidades más allá del desarrollo
-                        frontend, explorando también el backend. Crear una calculadora me permitió trabajar con
-                        variables y realizar cálculos, lo que me ayudó a profundizar en nuevas funciones y reforzar los
-                        conocimientos que ya había adquirido. Utilicé JavaScript para desarrollar este proyecto,
-                        destacando la funcionalidad y la lógica detrás de cada operación.
+                    <p>Una solución funcional diseñada desde la lógica. Este proyecto me permitió profundizar en
+                        JavaScript, conectando conceptos de frontend y backend para crear una herramienta clara,
+                        eficiente y útil para el usuario.
                     </p>
                     <a href="back/calculadora.html" class="btn-1" target="_blank" rel="noopener noreferrer">¡Probar!</a>
                 </div>
@@ -132,10 +885,9 @@
                 <div class="portfolio-txt">
                     <span>Proyecto 4</span>
                     <h3>¡Adivina el número!</h3>
-                    <p>Este proyecto práctico en JavaScript consistió en la creación de un juego interactivo que desafía
-                        al usuario a adivinar un número. A través de esta actividad, tuve la oportunidad de desarrollar
-                        aún más mi capacidad lógica, experimentando con diferentes funciones y estructuras de control.
-                        Fue un ejercicio divertido y útil para afianzar mis habilidades en programación con JavaScript.
+                    <p>Juego interactivo desarrollado en JavaScript que refuerza la lógica y el pensamiento
+                        estructurado. Un ejercicio dinámico donde combiné funcionalidad, experiencia lúdica y control de
+                        flujo para crear una interacción simple pero efectiva.
                     </p>
                     <a href="back/aleatorio.html" class="btn-1" target="_blank" rel="noopener noreferrer">¡Probar!</a>
                 </div>
@@ -146,10 +898,10 @@
                     <div class="portfolio-txt">
                         <span>Proyecto 5</span>
                         <h3>Cajero Automático</h3>
-                        <p>Este proyecto me permitió practicar más a fondo mis habilidades en programación al simular el
-                            funcionamiento de un cajero automático. Al establecer valores y crear diferentes
-                            interacciones, logré reforzar y consolidar todos los conocimientos adquiridos previamente.
-                            Fue una excelente oportunidad para retroalimentar y aplicar conceptos clave en JavaScript.
+                        <p>Simulación funcional creada con JavaScript para reforzar lógica, flujos condicionales y
+                            gestión de datos. Un proyecto orientado a la resolución práctica de interacciones reales,
+                            integrando usabilidad y ejecución técnica.
+
                         </p>
                         <a href="back/cajero.html" class="btn-1" target="_blank" rel="noopener noreferrer">¡Probar!</a>
                     </div>
@@ -167,11 +919,10 @@
                 <div class="portfolio-txt">
                     <span>Proyecto 6</span>
                     <h3>Plataforma Automatizada para la Biblioteca</h3>
-                    <p>Este proyecto representa el trabajo más significativo en el que he tenido la oportunidad de
-                        participar, una plataforma web completamente automatizada para la biblioteca de mi institución
-                        educativa. Esta herramienta ha sido diseñada para optimizar la gestión de préstamos, permitiendo
-                        que todo el proceso sea gestionado de manera automatizada, desde el registro de préstamos hasta
-                        su control y seguimiento.
+                    <p>Desarrollé una solución web integral para optimizar la gestión de préstamos de libros en una
+                        institución educativa. Esta plataforma automatiza procesos clave como el registro, control y
+                        seguimiento, reflejando el enfoque de SeebakTech en construir herramientas funcionales que
+                        resuelven necesidades reales con eficiencia y claridad.
                     </p>
                     <a href="libroverso/index.html" class="btn-1">¡ver más!</a>
 
@@ -179,19 +930,87 @@
 
             </div>
 
+            <div class="title">
+                <h3 id="certi">Certificaciones</h3>
+            </div>
+
+
             <div class="portfolio-1 certificaciones">
                 <div class="portfolio-txt">
                     <span>Certificaciones</span>
                     <h3>Fortalecimiento de Capacidades</h3>
-                    <p>Este curso me brindó la oportunidad de compartir experiencias valiosas mientras avanzaba en mi
-                        formación. No solo reforcé mis conocimientos en programación, sino que también participé en
-                        espacios
-                        de diálogo significativos. Estas conversaciones me permitieron ampliar mi comprensión sobre la
-                        importancia de vivir en un entorno más seguro y respetuoso para todos. Un aprendizaje integral
-                        facilitado por el CINDE.
+                    <p>Curso orientado al desarrollo de habilidades blandas como la comunicación, empatía y liderazgo
+                        consciente. Una experiencia que complementa mi perfil técnico con una visión más humana, clave
+                        para crear soluciones tecnológicas centradas en las personas.
+                        <br>
+                        <b>Certificado por CINDE (Fundación Centro Internacional de Educación y Desarrollo Humano).</b>
                     </p>
                     <div class="portfolio-img">
                         <img src="images/CINDE.png" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-1 certificaciones">
+                <div class="portfolio-txt">
+                    <span>Certificaciones</span>
+                    <h3>Desarrollo sostenible y habilidades sociemocionales</h3>
+                    <p>Curso enfocado en el fortalecimiento de habilidades sociemocionales y la conciencia sobre la
+                        movilidad responsable en contextos urbanos. Una formación que refuerza mi visión integral como
+                        profesional, conectando el desarrollo tecnológico con el compromiso social y ambiental.
+                        <b>Certificado por Fundación EPM y World Bicycle Relief.</b>
+                    </p>
+                    <div class="portfolio-img">
+                        <img src="images/habilidades.png" alt="curso">
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-1 certificaciones">
+                <div class="portfolio-txt">
+                    <span>Certificaciones</span>
+                    <h3>Excelencia en el servicio</h3>
+                    <p>Curso enfocado en la mejora continua de la atención al cliente, comunicación efectiva y calidad
+                        en la experiencia del usuario. Un aporte esencial para fortalecer mi perfil en contextos de
+                        asesoría comercial y soluciones centradas en las personas.
+                        <br>
+                        <b>Certificado por CESDE – Escuela Empresarial.</b>
+                    </p>
+                    <div class="portfolio-img">
+                        <img src="images/excelencia.png" alt="curso">
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-1 certificaciones">
+                <div class="portfolio-txt">
+                    <span>Certificaciones</span>
+                    <h3>Redacción y ortografía</h3>
+                    <p>Curso orientado al fortalecimiento de la comunicación escrita, una competencia clave para
+                        transmitir ideas con claridad, precisión y profesionalismo en contextos técnicos y comerciales.
+                        <br>
+                        <b>Certificado por CESDE – Escuela Empresarial.</b>
+                    </p>
+                    <div class="portfolio-img">
+                        <img src="images/redacción.png" alt="curso">
+                    </div>
+                </div>
+            </div>
+
+            <div class="portfolio-1 certificaciones">
+                <div class="portfolio-txt">
+                    <span>Certificaciones</span>
+                    <h3>Cátedra ser emprendedor</h3>
+                    <p>Curso para fortalecer las competencias emprendedoras y potenciar el desarrollo de habilidades
+                        clave para la gestión empresarial efectiva. Este curso me permitió adquirir herramientas
+                        prácticas para la creación y gestión de negocios, promoviendo una visión estratégica para
+                        alcanzar el éxito empresarial.
+                        <br>
+                        <b>Certificado por CESDE – Escuela Empresarial</b>
+
+                    </p>
+                    <div class="portfolio-img">
+                        <img src="images/catedra.png" alt="curso">
                     </div>
                 </div>
             </div>
@@ -216,8 +1035,9 @@
 
     <footer class="footer">
         <h2 id="contac">¡Contáctame!</h2>
-        <p>Sebastián Jimenez</p>
-        <p>+57 3195477754</p>
+        <p>Sebastián Jiménez</p>
+        <p><a href="https://api.whatsapp.com/send/?phone=573508596964&text&type=phone_number&app_absent=0"
+                target="_blank" rel="noopener noreferrer">Chat On WhatsApp</a></p>
         <p class="correo">sebastianjimenezsadep@gmail.com</p>
     </footer>
 
